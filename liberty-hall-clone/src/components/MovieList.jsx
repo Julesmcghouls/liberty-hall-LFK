@@ -16,13 +16,19 @@ fetchMovies();
 return (
 <div>
     <h1>Popular Movies</h1>
-    <ul>
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
     {movies.map((movie) => (
-        <li key={movie.id}>
-        {movie.title} ({movie.release_date})
-        </li>
+        <div key={movie.id} style={{ width: '200px', textAlign: 'center' }}>
+        <img
+            src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+            alt={movie.title}
+            style={{ width: '100%', borderRadius: '10px' }}
+        />
+        <h2 style={{ fontSize: '16px' }}>{movie.title}</h2>
+        <p style={{ fontSize: '14px', color: 'gray' }}>{movie.release_date}</p>
+        </div>
     ))}
-    </ul>
+    </div>
 </div>
 );
 };

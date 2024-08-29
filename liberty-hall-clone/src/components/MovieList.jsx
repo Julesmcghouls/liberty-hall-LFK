@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getPopularMovies } from '../api/tmdb';
 
+
+
 const MoviesList = () => {
 const [movies, setMovies] = useState([]);
 
@@ -26,6 +28,10 @@ return (
         />
         <h2 style={{ fontSize: '16px' }}>{movie.title}</h2>
         <p style={{ fontSize: '14px', color: 'gray' }}>{movie.release_date}</p>
+
+        <p style={{ fontSize: '14px' }}>{movie.overview}</p>
+
+        <p style={{ fontSize: '14px' }}>{movie.vote_average}</p>
         </div>
     ))}
     </div>

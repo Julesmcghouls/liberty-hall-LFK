@@ -1,9 +1,10 @@
-import React from "react";
-import MoviesList from "./components/MovieList";
+import Header from "./components/Header";
+import MovieList from "./components/MovieList";
 function App() {
   return (
     <div className="App">
-      <MoviesList />
+      <Header />
+      <MovieList />
     </div>
   );
 }

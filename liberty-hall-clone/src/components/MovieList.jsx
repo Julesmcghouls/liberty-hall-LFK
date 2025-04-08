@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { getPopularMovies } from '../api/tmdb';
-
-
+import { useEffect, useState } from "react";
+import { getPopularMovies } from "../api/tmdb";
 
 const MoviesList = () => {
 const [movies, setMovies] = useState([]);
@@ -16,26 +14,32 @@ fetchMovies();
 }, []);
 
 return (
-<div>
-    <h1>Popular Movies</h1>
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+<section className="movie-section">
+    <h2 className="section-title">Current Cosmic Features</h2>
+    <div className="movie-grid">
     {movies.map((movie) => (
-        <div key={movie.id} style={{ width: '200px', textAlign: 'center' }}>
-        <img
-            src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+        <div key={movie.id} className="movie-card">
+        <div className="poster-container">
+            <img
+            src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
             alt={movie.title}
-            style={{ width: '100%', borderRadius: '10px' }}
-        />
-        <h2 style={{ fontSize: '16px' }}>{movie.title}</h2>
-        <p style={{ fontSize: '14px', color: 'gray' }}>{movie.release_date}</p>
-
-        <p style={{ fontSize: '14px' }}>{movie.overview}</p>
-
-        <p style={{ fontSize: '14px' }}>{movie.vote_average}</p>
+            className="movie-poster"
+            />
+            <div className="movie-info">
+            <h3>{movie.title}</h3>
+            <div className="rating">
+                <span>★</span>
+                {movie.vote_average}/10
+            </div>
+            <p className="overview">
+                {movie.overview.substring(0, 150)}...
+            </p>
+            </div>
+        </div>
         </div>
     ))}
     </div>
-</div>
+</section>
 );
 };
 

@@ -1,17 +1,24 @@
 import axios from 'axios';
 
-const apiKey = import.meta.env.VITE_TMDB_API_KEY;
-const accessToken = import.meta.env.VITE_TMDB_READ_ACCESS_TOKEN;
+// const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+// const accessToken = import.meta.env.VITE_TMDB_READ_ACCESS_TOKEN;
 
 const tmdb = axios.create({
-baseURL: 'https://api.themoviedb.org/3',
-headers: {
-Authorization: `Bearer ${accessToken}`
-},
-params: {
-api_key: apiKey
-}
+    baseURL: 'https://api.themoviedb.org/3',
+    headers: {
+    Authorization: `Bearer ${import.meta.env.VITE_TMDB_READ_ACCESS_TOKEN}`
+    }
+    // Remove params.api_key if using Bearer token
 });
+// const tmdb = axios.create({
+// baseURL: 'https://api.themoviedb.org/3',
+// headers: {
+// Authorization: `Bearer ${accessToken}`
+// },
+// params: {
+// api_key: apiKey
+// }
+// });
 
 export const getPopularMovies = async () => {
 try {
